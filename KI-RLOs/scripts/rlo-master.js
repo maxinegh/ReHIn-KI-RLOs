@@ -262,11 +262,11 @@ $().ready(function(){
 	
 	// START Function to show/hide text component and toggle button display
 	//////////////////////////////////////////////////////////////////
-	var toolbar_buttons = '<div id="hide_text_control"><label><span id="hide_text_label">Hide Text </span><span class="switch"><input type="checkbox" id="hide_text" class="hide_text_input_control" value="1"><span class="slider"></span></span></label></div>';
+	// var toolbar_buttons = '<div id="hide_text_control"><label><span id="hide_text_label">Hide Text </span><span class="switch"><input type="checkbox" id="hide_text" class="hide_text_input_control" value="1"><span class="slider"></span></span></label></div>';
 	
 	if($('#av-component').length){
 		//double column
-		$('#page_title').after(toolbar_buttons);
+		//™$('#page_title').after(toolbar_buttons);
 	}
 	
 	

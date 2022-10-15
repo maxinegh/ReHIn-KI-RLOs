@@ -619,3 +619,139 @@ input:checked + .slider:before {
 	display:none;
 }
 /* END Privacy Statement */
+
+/* START case nav panel */
+#nav_panel {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+	background-color: transparent;
+	margin: 0;
+	padding: 5px 0 0 5px;
+	justify-content: space-around;
+}
+
+#nav_panel li {
+	display: flex;
+	flex-direction: column;
+	/*width: calc((100% - 20px)/2);*/
+	flex-grow: 2;
+	text-align: center;
+	margin: 0 5px 5px 0;
+	font-size: 1.8rem;
+}
+
+#nav_panel li a:link,
+#nav_panel li a:visited {
+	display:
+		block;
+	padding: 60px 10px;
+	background-color: #50A9C3;
+	color: #fff;
+	text-decoration:
+		none;
+	flex: 1 0 auto;
+	font-weight:
+		normal;
+	border-radius: 4px;
+}
+
+.case_continue #nav_panel li a:link,
+case_continue #nav_panel li a:visited {
+	padding: 10px 10px;
+}
+
+#nav_panel li a:link.p1,
+#nav_panel li a:visited.p1 {
+	background-color: #C2B22A;
+}
+
+#nav_panel li a:link.p2,
+#nav_panel li a:visited.p2 {
+	background-color: #009FA8;
+}
+
+#nav_panel li a:link.p3,
+#nav_panel li a:visited.p3 {
+	background-color: #F0862D;
+}
+
+#nav_panel li a:link.p4,
+#nav_panel li a:visited.p4 {
+	background-color: #663E90;
+}
+
+#nav_panel li a:link.p5,
+#nav_panel li a:visited.p5 {
+	background-color: #E7317F;
+}
+
+#nav_panel li a:link.p6,
+#nav_panel li a:visited.p6 {
+	background-color: #00A663;
+}
+
+#nav_panel li a:link.p7,
+#nav_panel li a:visited.p7 {
+	background-color: #00A7C8;
+}
+
+#nav_panel li a:hover,
+#nav_panel li a:focus,
+#nav_panel li a:hover.p1,
+#nav_panel li a:focus.p1,
+#nav_panel li a:hover.p2,
+#nav_panel li a:focus.p2,
+#nav_panel li a:hover.p3,
+#nav_panel li a:focus.p3,
+#nav_panel li a:hover.p4,
+#nav_panel li a:focus.p4,
+#nav_panel li a:hover.p5,
+#nav_panel li a:focus.p5,
+#nav_panel li a:hover.p6,
+#nav_panel li a:focus.p6,
+#nav_panel li a:hover.p7,
+#nav_panel li a:focus.p7 {
+	text-decoration: underline;
+	background-color: #000;
+	opacity: 0.7;
+	transition: background-color 0.5s ease;
+}
+
+#nav_panel li a:link.current_week,
+#nav_panel li a:visited.current_week {
+	background-color: #EE2881;
+}
+
+#nav_panel li a:hover.current_week,
+#nav_panel li a:focus.current_week {
+	background-color: #6C3E98;
+}
+
+@media(max-width:780px) {
+	#nav_panel {
+		flex-wrap: nowrap;
+		flex-direction: column;
+		display: block;
+		padding: 10px 10px 2.5px 10px;
+	}
+
+	#nav_panel li {
+		width: calc(100% - 20px);
+		flex-direction: column;
+		display: block;
+		padding: 0 0 5px 0;
+	}
+
+	#nav_panel li a:link,
+	#nav_panel li a:visited {
+		display: block;
+		width: 100%;
+	}
+}
+
+/* END case nav panel */
+
+.arabic {
+	text-align: right;
+}
