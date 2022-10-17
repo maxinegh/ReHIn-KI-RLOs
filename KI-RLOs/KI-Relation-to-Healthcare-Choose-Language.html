@@ -18,101 +18,6 @@
     <script src="scripts/jquery.js"></script>
     <script src="scripts/bootstrap.js"></script>
     <script src="scripts/rlo-master.js"></script>
-    <script>
-      var previous_answers = "";
-      var temp;
-      $().ready(function () {
-        $("#activity_function-buttons").hide();
-        if (privacy_cookies == 1 && privacy_storage == 1) {
-          // START STORAGE is available
-          $("#no_storage_warning").hide();
-          $("#activity_function-buttons").show();
-          // END STORAGE is available
-        } else {
-          //console.log('no storage enabled');
-        }
-
-        // START responding to the change in privacy controls
-        //////////////////////////////////////////////////////
-        $("#privacy_options_modal").on("hidden.bs.modal", function () {
-          if (privacy_save == true) {
-            // Privacy has been closed (potentially saved) check for implications
-            if (privacy_cookies == 1 && privacy_storage == 1) {
-              //console.log('privacy updated: storage enabled');
-              $("#activity_function-buttons").show();
-              $("#no_storage_warning").hide();
-            } else {
-              //console.log('privacy updated: no storage enabled');
-              $("#activity_function-buttons").hide();
-              $("#no_storage_warning").show();
-            }
-          }
-          privacy_save = false;
-        });
-        //////////////////////////////////////////////////////
-        // END responding to the change in privacy controls
-
-        if (privacy_cookies == 1 && privacy_storage == 1) {
-          //console.log('Privacy Cookies and Storage are available!');
-          if (storageAvailable("localStorage")) {
-            if (previous_answers != "") {
-              $("#task").after(
-                '<div class="alert alert-info vspace-top"><h4>Your Previous Thoughts</h4>' +
-                  previous_answers +
-                  "</div>"
-              );
-              //console.log(previous_answers);
-            }
-
-            if (localStorage.HELMOpen_RLO_template_activity != null) {
-              $("#task").val(localStorage.HELMOpen_RLO_template_activity);
-              //console.log('previous_answer available');
-            }
-          }
-        }
-
-        $("#save_data").click(function (event) {
-          event.preventDefault();
-          //alert('Save Clicked!');
-          $("#task_warning").remove();
-          $("#task_success").remove();
-          //console.log($('#task').val());
-          if ($("#task").val() == "") {
-            //alert('Nothing inputted for input 1');
-            $(
-              '<div id="task_warning" class="alert alert-danger"><p>Please provide your response</p></div>'
-            ).insertBefore("#task");
-          } else {
-            if (privacy_cookies == 1 && privacy_storage == 1) {
-              var temp_val = $("#task").val();
-              if (temp_val.length > 10) {
-                if (storageAvailable("localStorage")) {
-                  localStorage.HELMOpen_RLO_template_activity =
-                    $("#task").val();
-                  $(
-                    '<div id="task_success" class="alert alert-success"><p>Your response has been successfully stored</p></div>'
-                  ).insertBefore("#task");
-                }
-              } else {
-                $(
-                  '<div id="task_warning" class="alert alert-danger"><p>Your response needs to be a minimum of at least 10 characters.</p></div>'
-                ).insertBefore("#task");
-              }
-            }
-          }
-        });
-
-        $("#reset_data").click(function (event) {
-          event.preventDefault();
-          localStorage.removeItem("HELMOpen_RLO_template_activity");
-          $("#task_success").remove();
-          $("#task_warning").remove();
-          $("#task").val("");
-          $("#delete_info").collapse("hide");
-          $("#reset_info").collapse("hide");
-        });
-      });
-    </script>
     <noscript>
       <link rel="stylesheet" href="css/rlo-master-no-js.css" />
     </noscript>
@@ -178,9 +83,13 @@
           aria-label="Main resource navigation"
           id="main_menu"
         >
-          <li><a href="KI-Relation-to-Healthcare.html">Home</a></li>
+          <li class="active">
+            <a href="KI-Relation-to-Healthcare.html">Home</a>
+          </li>
           <li>
-            <a href="KI-Relation-to-Healthcare-Choose-Language.html"
+            <a
+              href="KI-Relation-to-Healthcare-Choose-Language.html"
+              aria-current="page"
               >Choose Language</a
             >
           </li>
@@ -197,8 +106,8 @@
               >Yusef does not want to go until he really needs to</a
             >
           </li>
-          <li class="active">
-            <a href="KI-Relation-to-Healthcare-S4-Y3.html" aria-current="page"
+          <li>
+            <a href="KI-Relation-to-Healthcare-S4-Y3.html"
               >Reflection on Yusef's case</a
             >
           </li>
@@ -277,106 +186,38 @@
         <article>
           <a id="content_start"></a>
           <p class="rlo_title">
-            <a href="index.html">Relation to Healthcare</a>
+            <a href="KI-Relation-to-Healthcare.html">Relation to Healthcare</a>
           </p>
           <div id="ss_readaloud_container"></div>
-          <h1 id="page_title"><span>4. </span>Reflection on Yusef's case</h1>
+          <h1 id="page_title">Relation to Healthcare</h1>
           <div class="row">
             <div class="col-md-6" id="text-component">
               <!-- START text column -->
-              <p>
-                Why do you think it is important for Yusef to go to a doctor
-                when he first thinks he may have a health problem rather than
-                when the health problem effects his everyday life?
-              </p>
-
-              <center>
-                <img
-                  src="images/KI-RH-S4-image.png"
-                  alt="Yusef thinking with light bulb over his head."
-                  width="150"
-                  height="282"
-                />
-              </center>
+              <ul id="nav_panel">
+                <li>
+                  <a
+                    href="KI-Relation-to-Healthcare-S1-Intro.html"
+                    class="voices_link p4"
+                    style="font-size: 24px"
+                    >Relation to Healthcare</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="KI-Relation-to-Healthcare-S1-Intro-Arabic.html"
+                    class="voices_link p2"
+                    style="font-size: 24px"
+                    >العلاقة مع الرعاية الصحية</a
+                  >
+                </li>
+              </ul>
 
               <!-- END text column -->
             </div>
 
             <div class="col-md-6" id="av-component">
               <!-- START media column -->
-              <!-- START Activity example -->
-              <div id="no_storage_warning" class="alert alert-warning">
-                <p>
-                  You have not given permission for the use of Cookies and Local
-                  Storage which would allow you to store your response to this
-                  activity. To grant permission for the use of Cookies and Local
-                  Storage within the &quot;<a
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#privacy_options_modal"
-                    >User Privacy Settings</a
-                  >&quot; (also available within the resource &quot;menu&quot;
-                  panel).
-                </p>
-              </div>
 
-              <div class="text_container" id="act8">
-                <label for="task"
-                  ><p><strong> </strong></p
-                ></label>
-                <textarea
-                  id="task"
-                  class="form-control"
-                  rows="10"
-                  placeholder="Write your response here"
-                ></textarea>
-
-                <div id="activity_function-buttons">
-                  <div class="function_buttons text-center">
-                    <br /><a href="#" class="btn btn-success" id="save_data"
-                      >Save</a
-                    >
-                    <button
-                      data-toggle="collapse"
-                      data-target="#reset_info"
-                      class="btn btn-danger"
-                    >
-                      <span class="glyphicon glyphicon-remove"></span> Reset
-                    </button>
-                  </div>
-
-                  <div id="delete_info" class="collapse alert alert-info">
-                    <p>
-                      By pressing the Delete button below you can remove your
-                      stored response.
-                    </p>
-                    <p>
-                      <a
-                        href="#"
-                        class="btn btn-danger"
-                        id="delete_data"
-                        data-scenario-id="mova1_isaac"
-                        >Delete</a
-                      >
-                    </p>
-                  </div>
-                </div>
-                <br /><br />
-                <div id="reset_info" class="collapse alert alert-info">
-                  <p>
-                    By pressing the <strong>Reset Data</strong> button below you
-                    can restart this activity. Importantly all stored responses
-                    will be deleted.
-                  </p>
-                  <p>
-                    <a href="#" class="btn btn-danger" id="reset_data"
-                      ><span class="glyphicon glyphicon-refresh"></span> Reset
-                      Data</a
-                    >
-                  </p>
-                </div>
-              </div>
-              <!-- END Activity example -->
               <!-- END media column -->
             </div>
           </div>
@@ -412,19 +253,19 @@
         <div
           class="progressbar green"
           role="progressbar"
-          aria-valuenow="24"
+          aria-valuenow="0"
           aria-valuemin="0"
           aria-valuemax="100"
-          style="width: 24%"
+          style="width: 0%"
         >
-          <span class="sr-only">24% Complete</span>
+          <span class="sr-only">0% Complete</span>
         </div>
       </div>
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-6 col-sm-2 text-left col-md-push-8">
             <a
-              href="KI-Relation-to-Healthcare-S3-Y2.html"
+              href="KI-Relation-to-Healthcare.html"
               class="btn btn-mobile-base btn-block"
               id="previous_button"
               ><span class="glyphicon glyphicon-chevron-left"></span> Previous
@@ -438,7 +279,7 @@
           </div>
           <div class="col-xs-6 col-sm-2">
             <a
-              href="KI-Relation-to-Healthcare-S5-A1.html"
+              href="KI-Relation-to-Healthcare-S1-Intro.html"
               class="btn btn-mobile-base btn-block"
               id="next_button"
               >Next <span class="glyphicon glyphicon-chevron-right"></span
